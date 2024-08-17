@@ -1,8 +1,26 @@
+import random    # necessary for shuffling questions
 class ExamReviewer:
     pass
 
     def generateRandomQuestions():
-        pass
+        '''
+        Generates questions and options based on customize_session.
+        '''
+        # the following code will create a list of questions.
+        
+        # if user selects 'True or False' question type, only include the questions from the 'True or False' dictionary.
+        if self.question_type == "True or False":
+            questions = self.exam_items["True or False"]["Questions"]
+            options = self.exam_items["True or False"]["Options"]
+        # if user selects 'Multiple Choice' question type, only include the questions from the 'Multiple Choice' dictionary.
+        elif self.question_type == "Multiple Choice":
+            questions = self.exam_items["Multiple Choice"]["Questions"]
+            options = self.exam_items["Multiple Choice"]["Options"]
+        # if user selects both question types, add both to a list.
+        else:
+            questions = list(self.exam_items["True or False"]["Questions"]) + list(self.exam_items["Multiple Choice"]["Questions"])
+            options = self.exam_items["Multiple Choice"]["Options"]
+
         
     #customize_session method
     def customize_session(subject):
