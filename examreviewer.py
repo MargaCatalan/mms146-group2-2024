@@ -21,6 +21,13 @@ class ExamReviewer:
             questions = list(self.exam_items["True or False"]["Questions"]) + list(self.exam_items["Multiple Choice"]["Questions"])
             options = self.exam_items["Multiple Choice"]["Options"]
 
+        # select questions based on the number requested in customize_session()
+        self.selected_questions = random.sample(questions, self.num_questions)
+
+        # if user selected the option to shuffle, shuffle the generated list of questions.
+        if self.shuffle:
+            random.shuffle(self.selected_questions)
+
         
     #customize_session method
     def customize_session(subject):
