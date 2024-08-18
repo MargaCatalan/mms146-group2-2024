@@ -1,10 +1,5 @@
 # mms146-group2-2024
-# MMS 146: Object-Oriented Programming
-#### 3rd Trimester AY 2023-2024
-
-
-
-## PROJECT SPECIFICATIONS: EXAM REVIEWER
+# PROJECT SPECIFICATIONS: EXAM REVIEWER
 
 ### Application Overview
 
