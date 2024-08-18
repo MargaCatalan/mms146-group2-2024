@@ -29,7 +29,7 @@ The text-based exam reviewer system will serve as a tool for students to review 
 
 #### Class Structure
 
-These are the classes and their specifications that you are expected to implement:
+These are the classes and their specifications that we are expected to implement:
 
 1. **Question Class**
     - Attributes:
