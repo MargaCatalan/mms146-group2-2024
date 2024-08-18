@@ -2,7 +2,7 @@ import random    # necessary for shuffling questions
 class ExamReviewer:
     pass
 
-    def generateRandomQuestions():
+    def generate_random_questions():
         '''
         Generates questions and options based on customize_session.
         '''
