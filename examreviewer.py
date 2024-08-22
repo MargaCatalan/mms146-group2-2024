@@ -1,2 +1,3 @@
 class ExamReviewer:
-    pass
+    def generate_random_questions():
+        pass
