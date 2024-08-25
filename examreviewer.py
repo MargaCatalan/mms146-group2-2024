@@ -47,14 +47,129 @@ class ExamReviewer:
         return questions, options, answers
 
 # Task Code: Exam_Reviewer_2
-# Insert your work/contributions below
+    def customize_session(subject, user_name):
+        print("\n\n----------------------  Exam Customization  ---------------------\n\n")
+        print(
+            f"You have decided to take the {subject} exam. Let’s customize your exam reviewer!\n")
+    
+        #Ask for question type
+        while True:
+            print("What type of exam questions do you wish to take?")
+            print("[1] True or False")
+            print("[2] Multiple Choice")
+            print("[3] Both")
+            print("[0] Back")
+            answer = input("\nPlease choose an option: ")
+            if answer == "0":
+                return Review_Menu()  #Go back to review menu
+            elif answer in ["1", "2", "3"]:
+                question_type = ["True or False",
+                                 "Multiple Choice", "Both"][int(answer) - 1]
+                break
+            else:
+                print("Invalid input. Please try again.\n")
 
 
+        if subject == "Random":
+            # If Random, total number of questions in "True or False" or "Multiple Choice": 50 questions
+            if question_type == "True or False" or question_type == "Multiple Choice":
+                min_question = 1
+                max_questions = 50
+            # While Both is 100 questions
+            else:
+                min_question = 1
+                max_questions = 100
 
+        else:
+    
+            #Total number of questions in "True or False" or "Multiple Choice": 10 questions
+            #While Both is 20 questions
+            if question_type == "True or False" or question_type == "Multiple Choice":
+                min_question = 1
+                max_questions = 10
+            else:
+                min_question = 1
+                max_questions = 20
 
+        while True:
+            try:
+                answer = input(
+                f"\nHow many questions do you wish to review? (Input range: {min_question} - {max_questions}): ")
+                if min_question <= int(answer) <= max_questions:
+                    num_questions = int(answer)
+                    break
+                else:
+                    print("Invalid input. Please enter a valid number of questions within the allowed range.\n")
 
+            except ValueError:
+                print("Invalid input. Please enter a number.")
+    
+        #Ask for shuffling
+        while True:
+            answer = input("Do you want to shuffle the questions? (Yes/No): ")
+            if answer.lower() in ["yes"]:
+                shuffle = "Enabled"  #Changes
+                break
+            elif answer.lower() in ["no"]:
+                shuffle = "Disabled"
+                break
+            else:
+                print("Invalid input. Please try again.\n")
+    
+        #Print exam items based on customization
+        print(f"\n\n---------------------  {subject} Exam Attempt  ---------------------\n\n")
+        print(f"Subject: {subject}")
+        print(f"Question Type: {question_type}")
+        print(f"Number of Questions: {num_questions}")
+        print(f"Shuffle: {shuffle}")
 
+        if subject == "Random":
+            # Initialize combined questions
+            combined_questions = {"True or False": {"Questions": [], "Options": [], "Answers": []},
+                                "Multiple Choice": {"Questions": [], "Options": [], "Answers": []}}
 
+            # Make a dictionary combining all reviewers
+            all_reviewers = {
+                "English": EnglishReviewer(),
+                "Math": MathReviewer(),
+                "Filipino": FilipinoReviewer(),
+                "Science": ScienceReviewer(),
+                "Art": ArtReviewer()
+            }
+
+            # Combine questions from all reviewers
+            for reviewer in all_reviewers.values():
+                exam_items = reviewer.exam_items
+                if question_type in ["True or False", "Both"]:
+                    combined_questions["True or False"]["Questions"].extend(exam_items["True or False"]["Questions"])
+                    combined_questions["True or False"]["Options"].extend(exam_items["True or False"]["Options"])
+                    combined_questions["True or False"]["Answers"].extend(exam_items["True or False"]["Answers"])
+                if question_type in ["Multiple Choice", "Both"]:
+                    combined_questions["Multiple Choice"]["Questions"].extend(exam_items["Multiple Choice"]["Questions"])
+                    combined_questions["Multiple Choice"]["Options"].extend(exam_items["Multiple Choice"]["Options"])
+                    combined_questions["Multiple Choice"]["Answers"].extend(exam_items["Multiple Choice"]["Answers"])
+
+            # Call display_questions with combined questions
+            reviewer.display_questions(combined_questions, question_type, num_questions, shuffle, subject, user_name)
+
+        else:
+            # Handle specific subject case
+            if subject == "English":
+                reviewer = EnglishReviewer()
+            elif subject == "Math":
+                reviewer = MathReviewer()
+            elif subject == "Filipino":
+                reviewer = FilipinoReviewer()
+            elif subject == "Science":
+                reviewer = ScienceReviewer()
+            elif subject == "Art":
+                reviewer = ArtReviewer()
+            else:
+                print("Invalid subject. Please try again.")
+                return
+            
+            # Call display_questions
+            reviewer.display_questions(reviewer.exam_items, question_type, num_questions, shuffle, subject, user_name)
 
 # Task Code: Exam_Reviewer_3
 # Insert your work/contributions below
