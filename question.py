@@ -8,7 +8,6 @@
 
 
 # Task Code: Question_2
-# Insert your work/contributions below
 class Question:
     def __init__(self):
         self.question_text = None
