@@ -106,21 +106,21 @@ def View_Report_Menu():
             continue
 
 
-
-
-
-
-
-
 # Task Code: Menu_4
-# Insert your work/contributions below
+        subjects = ["English", "Math", "Filipino", "Science", "Art"]
 
+        if 1 <= choice <= 5:
+            subject = subjects[choice - 1]
+            ExamReviewer.generate_report(subject)
+        elif choice == 6:
+            ExamReviewer.get_all_performance_report()
+        elif choice == 0:
+            Main_Menu()
+        else:
+            print("Invalid input. Please try again.")
+            continue
 
-
-
-
-
-
+        Continue_Menu()
 
 
 # Task Code: Menu_5
