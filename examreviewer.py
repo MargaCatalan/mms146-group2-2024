@@ -230,7 +230,7 @@ class ExamReviewer:
 
 
 # Task Code: Exam_Reviewer_4
-@staticmethod
+    @staticmethod
     def get_all_performance_report():
         global exam_attempts
         if not exam_attempts:
