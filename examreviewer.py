@@ -229,16 +229,34 @@ class ExamReviewer:
                 print("Invalid input. Please try again.")
 
 
-
-
-
-
-
-
 # Task Code: Exam_Reviewer_4
-# Insert your work/contributions below
+@staticmethod
+    def get_all_performance_report():
+        global exam_attempts
+        if not exam_attempts:
+            print("No exam attempts found for any subject.")
+            return
+        
+        for subject, attempts in exam_attempts.items():
+            print(f"\n\n--------------------------------  {user_name.title()}'s {subject} Exam Reports  --------------------------------")
+            for i, attempt in enumerate(attempts, 1):
+                print(f"\n\n----------------------  Attempt {i}  ----------------------\n")
+                questions = attempt ['questions']
+                student_answers = attempt ['student_answers']
+                score = attempt ['score']
 
+                for j, (question, answer) in enumerate(zip(questions, student_answers), 1):
+                    print(f"\nQuestion {j}: {question['question']}")
+                    print(f"Your answer: {answer}")
+                    print(f"Correct answer: {question['correct_answer']}")
+                    is_correct = answer.lower() == question['correct_answer'].lower()
+                    print("You got this correct!" if is_correct else "You got this wrong.")
 
+                print("\n\n[Attempt Summary]")
+                print(f"Total score: {score['score']}/{score['total_items']}")
+                print(f"Percentage: {score['score_percentage']:.2f}%")
+
+        print(f"\n\n----------------------  End of {user_name.title()}'s Exam Reports  ---------------------")
 
 
 
