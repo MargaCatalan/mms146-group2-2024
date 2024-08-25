@@ -37,12 +37,50 @@ class Student:
                                                'given_answer' : answer,
                                                'correct_answer' : correct_answer})
 
+# Task Code: Student_3
 
+@staticmethod
+    def get_performance_report(subject, questions, student_answers, print_report=True):
+        correct_answers = 0
+        mistakes = []
+        total_items = len(questions)
 
+        for i, question in enumerate(questions):
+            user_answer = student_answers[i]
+            correct_answer = question['correct_answer']
+            
+            if user_answer.lower() == correct_answer.lower():
+                correct_answers += 1
+            else:
+                mistakes.append({
+                    'question_number': i + 1,
+                    'question': question['question'],
+                    'user_answer': user_answer,
+                    'correct_answer': correct_answer
+                })
 
+        score = correct_answers
+        score_percentage = (correct_answers / total_items) * 100 if total_items > 0 else 0
+        num_mistakes = total_items - correct_answers
 
+        if print_report:
+            print(f"\n\n----------------------  End of {subject} Exam  ---------------------\n\n")
+            print("Here's your exam performance report:\n")
+            print(f"Correct Answers: {correct_answers}")
+            print(f"Mistakes: {num_mistakes}")
+            print(f"Your total score is {score}/{total_items}, which is {score_percentage:.2f}%. \n")
 
+            if mistakes:
+                print(f"\n[Suggested Items to Review]")
+                for mistake in mistakes:
+                    print(f"\nQuestion {mistake['question_number']}: {mistake['question']}")
+                    print(f"Your answer: {mistake['user_answer']}")
+                    print(f"Correct answer: {mistake['correct_answer']}")
+            else:
+                print("\nCongratulations! You have 0 mistakes!\n")
 
-
-# Task Code: Student_1
-# Insert your work/contributions below
+        return {
+            'score': score,
+            'total_items': total_items,
+            'score_percentage': score_percentage
+        }
