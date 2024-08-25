@@ -1,5 +1,3 @@
-# Task Code: Student_1
-# Insert your work/contributions below
 class Student:
     def __init__(self, name):
         self.name = name
