@@ -173,6 +173,60 @@ class ExamReviewer:
 
 # Task Code: Exam_Reviewer_3
 # Insert your work/contributions below
+# To save the attempts made by users in a certain subject    
+    def save_exam_attempt(self):
+        global exam_attempts
+        if self.subject not in exam_attempts:
+            exam_attempts[self.subject] = []
+    
+        # Instead of calling get_performance_report from ExamReviewer, use Student's static method
+        score = Student.get_performance_report(self.subject, self.questions, self.student_answers, print_report=False)
+        attempt = {
+            'questions': self.questions,
+            'student_answers': self.student_answers,
+            'score': score
+        }
+        exam_attempts[self.subject].append(attempt)
+        
+    @staticmethod
+    def generate_report(subject):
+        global exam_attempts
+        if subject not in exam_attempts or not exam_attempts[subject]:
+            print(f"No exam attempts found for {subject}.")
+            return
+
+        print(f"\n\n----------------------  {user_name.title()}'s {subject} Exam Reports  ---------------------")
+        for i, attempt in enumerate(exam_attempts[subject], 1):
+            print(f"\n\n----------------------  Attempt {i}  ----------------------\n")
+            questions = attempt['questions']
+            student_answers = attempt['student_answers']
+            score = attempt['score']
+
+            for j, (question, answer) in enumerate(zip(questions, student_answers), 1):
+                print(f"\nQuestion {j}: {question['question']}")
+                print(f"Your answer: {answer}")
+                print(f"Correct answer: {question['correct_answer']}")
+                is_correct = answer.lower() == question['correct_answer'].lower()
+                print("You got this correct!" if is_correct else "You got this wrong.")
+
+
+            print("\n\n[Attempt Summary]")
+            print(f"Total score: {score['score']}/{score['total_items']}")
+            print(f"Percentage: {score['score_percentage']:.2f}%")
+        
+        print(f"\n\n----------------------  End of {subject} Exam Reports  ---------------------\n\n")
+
+        while True:
+            choice = input("Do you wish to view another report? (Yes/No): ").lower()
+
+            if choice == "yes":
+                View_Report_Menu()
+
+            elif choice == "no":
+                Continue_Menu()
+
+            else:
+                print("Invalid input. Please try again.")
 
 
 
