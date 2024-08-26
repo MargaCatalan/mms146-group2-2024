@@ -56,7 +56,7 @@ These are the classes and their specifications that we are expected to implement
       - customizeSession - let the user customize the review session (type of question, number of question, topic, etc.)
       - generateReport - generate the report of the review session (performance of the students, questions and right answers)
 
-## Important Notes
+### Important Notes
 
 You will find a file named `Group2_Grade_10_Exam_Reviewer.py` in the `main` directory. Here’s what you need to know about it:
 
