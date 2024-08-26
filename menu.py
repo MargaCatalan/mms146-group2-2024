@@ -1,8 +1,16 @@
 # Task Code: Menu_1
 "Menus"
-def Main_Menu():                      
+def Main_Menu():
+    """
+    Displays the main menu for Group 2's Grade 10 Exam Reviewer.
+    Allows the user to choose between reviewing a subject, viewing
+    previous exam performance reports, or exiting the program
+    """                      
     while True:
+        # Display the title of the application
         print("\n\n----------------------  Group 2’s Grade 10 Exam Reviewer  ---------------------\n\n")
+
+        # Greet the user and display the menu options
         print("Hi, {}!".format(user_name.title()))
         print("What do you wish to do?")
         print("  [1] Review a Subject")
@@ -10,21 +18,27 @@ def Main_Menu():
         print("  [0] None")
 
         try:
+            # Prompt the user to choose an option
             choice = int(input('\n'"Please choose an option: "))
             
             if choice == 1:
+                # Navigate to the Review Menu
                 Review_Menu()
                   
-            elif choice == 2:                                                 
+            elif choice == 2:
+                # Navigate to the View Report Menu
                 View_Report_Menu()
                   
             elif choice == 0:
+                # Navigate to the Exit Menu
                 Exit_Menu()
 
             else:
+                # Handle invalid input that is not 1, 2, or 0
                 print("Invalid input. Please try again.\n")  
         
         except ValueError:
+            # Handle non-integer input
             print("Invalid input. Please enter a number.")
 
 def Review_Menu():
