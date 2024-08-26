@@ -1,5 +1,3 @@
-# Task Code: Menu_1
-"Menus"
 def Main_Menu():
     """
     Displays the main menu for Group 2's Grade 10 Exam Reviewer.
@@ -7,7 +5,7 @@ def Main_Menu():
     previous exam performance reports, or exiting the program
     """                      
     while True:
-        # Display the title of the application
+        # Display the title of the program
         print("\n\n----------------------  Group 2’s Grade 10 Exam Reviewer  ---------------------\n\n")
 
         # Greet the user and display the menu options
@@ -71,61 +69,56 @@ def Review_Menu():
             print("Invalid input. Please enter a number.\n")
             continue # Restart the loop to ask for input again
 
+        # Map the user's choice to the corresponding subject
+        if choice == 1: 
+            chosen_subject = "English" 
+            print("English Subject") 
+            ExamReviewer.customize_session(chosen_subject, user_name) 
+        
+        elif choice == 2: 
+            chosen_subject = "Math" 
+            print ("Math Subject") 
+            ExamReviewer.customize_session(chosen_subject, user_name)  
+        
+        elif choice == 3: 
+            chosen_subject = "Filipino" 
+            print("Filipino Subject")
+            ExamReviewer.customize_session(chosen_subject, user_name)  
+        
+        elif choice == 4: 
+            chosen_subject = "Science" 
+            print("Science Subject") 
+            ExamReviewer.customize_session(chosen_subject, user_name) 
+        
+        elif choice == 5: 
+            chosen_subject = "Art" 
+            print("Art Subject") 
+            ExamReviewer.customize_session(chosen_subject, user_name)  
+        
+        elif choice == 6: 
+            chosen_subject = "Random" 
+            print("Random Subject") 
+            ExamReviewer.customize_session(chosen_subject, user_name) 
 
+        elif choice == 0:
+            # Return to the main menu
+            Main_Menu()
+            
+        elif:
+            # Handle invalid input that is not 1, 2, 3, 4, 5, 6, or, 0
+            print("Invalid input. Please try again.\n")
 
-
-
-
-# Task Code: Menu_2
-if choice == 1: 
-    chosen_subject = "English" 
-    print("English Subject") 
-    ExamReviewer.customize_session(chosen_subject, user_name) 
-
-elif choice == 2: 
-    chosen_subject = "Math" 
-    print ("Math Subject") 
-    ExamReviewer.customize_session(chosen_subject, user_name)  
-
-elif choice == 3: 
-    chosen_subject = "Filipino" 
-    print("Filipino Subject")
-    ExamReviewer.customize_session(chosen_subject, user_name)  
-
-elif choice == 4: 
-    chosen_subject = "Science" 
-    print("Science Subject") 
-    ExamReviewer.customize_session(chosen_subject, user_name) 
-
-elif choice == 5: 
-    chosen_subject = "Art" 
-    print("Art Subject") 
-    ExamReviewer.customize_session(chosen_subject, user_name)  
-
-elif choice == 6: 
-    chosen_subject = "Random" 
-    print("Random Subject") 
-    ExamReviewer.customize_session(chosen_subject, user_name) 
-
-elif choice == 0: 
-    Main_Menu()
-    
-elif:
-    print("Invalid input. Please try again.\n")
-
-
-
-
-
-
-
-
-
-
-# Task Code: Menu_3
 def View_Report_Menu():
+    """
+    Displays the menu for viewing previous exam performance reports.
+    The user can choose to review a report from a selected subject,
+    view reports for all subjects, or return to the main menu.
+    """
     while True:
+        # Display the header for viewing exam performance reports
         print('\n''\n'"----------------------  Viewing Previous Exam Performance Reports  ---------------------"'\n''\n'.format(user_name.title()))
+
+        # Display the list of subjects for which reports can be viewed
         print("Which subject’s exam performance report do you wish to view?")
         print("  [1] English")
         print("  [2] Math")
@@ -136,13 +129,13 @@ def View_Report_Menu():
         print("  [0] Back")
 
         try:
+            # Prompt the user to select an option
             choice = int(input('\nPlease choose an option: '))
         except ValueError:
+            # Handle non-integer input
             print("Invalid input. Please enter a number.")
-            continue
+            continue  # Restart the loop to ask for input again
 
-
-# Task Code: Menu_4
         subjects = ["English", "Math", "Filipino", "Science", "Art"]
 
         if 1 <= choice <= 5:
@@ -154,12 +147,11 @@ def View_Report_Menu():
             Main_Menu()
         else:
             print("Invalid input. Please try again.")
-            continue
+            continue  # Restart the loop to ask for input again
 
+        # After viewing a report, navigate to the continue menu
         Continue_Menu()
 
-
-# Task Code: Menu_5
 def Continue_Menu():
     """
     Asks the user if they wish to continue using the program or exit.
