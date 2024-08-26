@@ -178,8 +178,11 @@ def Exit_Menu():
         else:
             print("Invalid input. Please try again.")
 
-"Running the program" 
+"This is the main loop to run the program" 
 while True:
+    # Display a welcome message and prompt the user to enter their name.
     print('\n''\n'"----------------------  Welcome to Group 2’s Grade 10 Exam Reviewer  ---------------------"'\n''\n')
     user_name = input('\n'"Please enter your name: ")
+    
+    # Start the main menu
     Main_Menu()
