@@ -1,12 +1,34 @@
 # Task Code: Exam_Reviewer_1
 class ExamReviewer:
+    """
+    Class for handling exam reviews, including generating random questions, customizing review sessions, saving attempts, and generating reports.
+    """
     def __init__(self, subject, questions, student_answers):
+        """ 
+        Sets up the ExamReviewer with the subject, the list of questions, and the student's answers.
+
+        Parameters
+        ----------
+        subject (str) : The subject of the exam.
+        questions (list) : List of questions that was used in the exam.
+        student_answes (list) : Answers that the student provided.
+        """
         self.subject = subject
         self.questions = questions
         self.student_answers = student_answers
 
     @staticmethod
     def generate_random_questions(exam_items, selected_type, num_questions, shuffle):
+        """
+        Creates random set of questions based on the type of exam, the number of questions, and whether they should be shuffled.
+
+        Parameters
+        ----------
+        exam_items (dict) : Contains the questions, options, and answers for each type of exam.
+        selected_type (str) : Type of questions to include (like "True or False", "Multiple Choice", or "Both").
+        num_questions (int) : The number of questions to generate.
+        shuffle (str) : Whether to shuffle the questions ("Enabled" or "Disabled").
+        """
         questions = []
         options = []
         answers = []
@@ -48,11 +70,19 @@ class ExamReviewer:
 
 # Task Code: Exam_Reviewer_2
     def customize_session(subject, user_name):
+        """
+        Sets up the exam session based on what subject and options the user chooses.
+
+        Parameters
+        ----------
+        subject (str) : Subject for the session.
+        user_name (str) : Name of the user taking the exam.
+        """
         print("\n\n----------------------  Exam Customization  ---------------------\n\n")
         print(
             f"You have decided to take the {subject} exam. Let’s customize your exam reviewer!\n")
     
-        #Ask for question type
+        # Ask for question type
         while True:
             print("What type of exam questions do you wish to take?")
             print("[1] True or False")
@@ -61,7 +91,7 @@ class ExamReviewer:
             print("[0] Back")
             answer = input("\nPlease choose an option: ")
             if answer == "0":
-                return Review_Menu()  #Go back to review menu
+                return Review_Menu()  # Go back to review menu
             elif answer in ["1", "2", "3"]:
                 question_type = ["True or False",
                                  "Multiple Choice", "Both"][int(answer) - 1]
@@ -82,8 +112,8 @@ class ExamReviewer:
 
         else:
     
-            #Total number of questions in "True or False" or "Multiple Choice": 10 questions
-            #While Both is 20 questions
+            # Total number of questions in "True or False" or "Multiple Choice": 10 questions
+            # While Both is 20 questions
             if question_type == "True or False" or question_type == "Multiple Choice":
                 min_question = 1
                 max_questions = 10
@@ -104,11 +134,11 @@ class ExamReviewer:
             except ValueError:
                 print("Invalid input. Please enter a number.")
     
-        #Ask for shuffling
+        # Ask for shuffling
         while True:
             answer = input("Do you want to shuffle the questions? (Yes/No): ")
             if answer.lower() in ["yes"]:
-                shuffle = "Enabled"  #Changes
+                shuffle = "Enabled"  # Changes
                 break
             elif answer.lower() in ["no"]:
                 shuffle = "Disabled"
@@ -116,7 +146,7 @@ class ExamReviewer:
             else:
                 print("Invalid input. Please try again.\n")
     
-        #Print exam items based on customization
+        # Print exam items based on customization
         print(f"\n\n---------------------  {subject} Exam Attempt  ---------------------\n\n")
         print(f"Subject: {subject}")
         print(f"Question Type: {question_type}")
@@ -172,9 +202,12 @@ class ExamReviewer:
             reviewer.display_questions(reviewer.exam_items, question_type, num_questions, shuffle, subject, user_name)
 
 # Task Code: Exam_Reviewer_3
-# Insert your work/contributions below
-# To save the attempts made by users in a certain subject    
     def save_exam_attempt(self):
+        """ 
+        Saves the student's current exam attempt, including their answers and score.
+
+        This method makes sure the student's performance is stored so it can be reviewed later.
+        """
         global exam_attempts
         if self.subject not in exam_attempts:
             exam_attempts[self.subject] = []
@@ -190,6 +223,13 @@ class ExamReviewer:
         
     @staticmethod
     def generate_report(subject):
+        """
+        Generates a detailed report for all student attempts in a specific subject.
+
+        Parameters
+        ----------
+        subject (str) : The subject for which the report will be created.
+        """
         global exam_attempts
         if subject not in exam_attempts or not exam_attempts[subject]:
             print(f"No exam attempts found for {subject}.")
@@ -232,6 +272,11 @@ class ExamReviewer:
 # Task Code: Exam_Reviewer_4
     @staticmethod
     def get_all_performance_report():
+        """
+        Generates a detailed report covering all the student's exam attempts across every subject.
+
+        This gives an overall view of how the student is doing in all subjects.
+        """
         global exam_attempts
         if not exam_attempts:
             print("No exam attempts found for any subject.")
