@@ -104,7 +104,7 @@ def Review_Menu():
             # Return to the main menu
             Main_Menu()
             
-        elif:
+        else:
             # Handle invalid input that is not 1, 2, 3, 4, 5, 6, or, 0
             print("Invalid input. Please try again.\n")
 
