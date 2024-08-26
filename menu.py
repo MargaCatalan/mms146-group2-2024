@@ -76,33 +76,43 @@ def Review_Menu():
 
 
 
-
 # Task Code: Menu_2
-def Review_Menu(name):
-    print(f"---------------------- Hello, {name}! ----------------------")
-    while True:
-        print("Which subject do you wish to review?")
-        print("[1] English")
-        print("[2] Math")
-        print("[3] Filipino")
-        print("[4] Science")
-        print("[5] Art")
-        print("[6] Any (Random)")
-        print("[0] Back")
-        answer = input("Please choose an option: ")
-        if answer == "0":
-            # go back to main menu (not implemented in this code)
-            pass
-        elif answer in ["1", "2", "3", "4", "5", "6"]:
-            subjects = ["English", "Math", "Filipino", "Science", "Art", "Any (Random)"]
-            subject = subjects[int(answer) - 1]
-            customize_session(subject)
-            break
-        else:
-            print("Invalid input. Please try again.")
+if choice == 1: 
+    chosen_subject = "English" 
+    print("English Subject") 
+    ExamReviewer.customize_session(chosen_subject, user_name) 
 
-# Call the Review_Menu function with a blank name
-Review_Menu("")
+elif choice == 2: 
+    chosen_subject = "Math" 
+    print ("Math Subject") 
+    ExamReviewer.customize_session(chosen_subject, user_name)  
+
+elif choice == 3: 
+    chosen_subject = "Filipino" 
+    print("Filipino Subject")
+    ExamReviewer.customize_session(chosen_subject, user_name)  
+
+elif choice == 4: 
+    chosen_subject = "Science" 
+    print("Science Subject") 
+    ExamReviewer.customize_session(chosen_subject, user_name) 
+
+elif choice == 5: 
+    chosen_subject = "Art" 
+    print("Art Subject") 
+    ExamReviewer.customize_session(chosen_subject, user_name)  
+
+elif choice == 6: 
+    chosen_subject = "Random" 
+    print("Random Subject") 
+    ExamReviewer.customize_session(chosen_subject, user_name) 
+
+elif choice == 0: 
+    Main_Menu()
+    
+elif:
+    print("Invalid input. Please try again.\n")
+
 
 
 
