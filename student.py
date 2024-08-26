@@ -1,6 +1,10 @@
 # Task Code: Student_1
 class Student:
     def __init__(self, name):
+        '''
+        Provide the attributes of the student object created a list to  the given answers by the student.
+        '''
+
         self.name = name
         # List of dictionaries to store the answers given by the student for each subject
         self.english_answers_given = [correct_answer] # type: ignore
@@ -10,6 +14,9 @@ class Student:
         self.science_answers_given = [correct_answer] # type: ignore
 
 # Task Code: Student_2
+    '''
+    Method to save the answer of the student by subject.
+    '''
     def save_answer(self, subject, question, options, answer, correct_answer):
         if subject == "english":
             self.english_answers_given.append({'question' : question,
@@ -40,6 +47,9 @@ class Student:
 # Task Code: Student_3
 
 @staticmethod
+    '''
+    A method to generate the performance report by getting the correct answers, mistakes, total items, and percentage of score of the student.
+    '''
     def get_performance_report(subject, questions, student_answers, print_report=True):
         correct_answers = 0
         mistakes = []
