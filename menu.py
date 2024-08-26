@@ -151,15 +151,25 @@ def View_Report_Menu():
 
 # Task Code: Menu_5
 def Continue_Menu():
+    """
+    Asks the user if they wish to continue using the program or exit.
+    The user can choose to return to the main menu for another session
+    or exit the program entirely.
+    """
+
     while True:
+        # Prompt the user to decide whether to continue using the program
         choice = input('\n'"Do you wish to have another session in the program? (Yes/No): ").lower()
-    
+        
+        # If yes, return to the main menu for another session
         if choice == "yes":
             Main_Menu()
 
+        # If no, navigate to the exit menu
         elif choice == "no":
             Exit_Menu()
 
+        # Handle invalid input that is not 'yes' or 'no'
         else:
             print("Invalid input. Please try again.")
 
