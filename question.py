@@ -58,8 +58,6 @@ class Question:
 
 
 
-
-
 # Task Code: Question_3
 class EnglishReviewer (Question):    
     def __init__(self):
