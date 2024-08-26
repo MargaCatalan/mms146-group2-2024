@@ -42,8 +42,18 @@ def Main_Menu():
             print("Invalid input. Please enter a number.")
 
 def Review_Menu():
+    """
+    Displays the review menu where the user can select a subject to review.
+    The user can choose to review English, Math, Filipino, Science, Art, or
+    Random, which is a combination of the aforementioned subjects, or return
+    to the main menu.
+    """
+
+    # Greet the user with the their name
     print('\n''\n'"-------------------------------  Hello, {}!  -------------------------------"'\n''\n'.format(user_name.title()))
+
     while True:
+        # Display the list of subjects available for review
         print("Which subject do you wish to review?")
         print("  [1] English")
         print("  [2] Math")
@@ -54,10 +64,12 @@ def Review_Menu():
         print("  [0] Back")
 
         try:
+            # Prompt the user to choose a subject
             choice = int(input('\n'"Please choose an option: "))
         except ValueError:
+            # Handle non-integer input
             print("Invalid input. Please enter a number.\n")
-            continue
+            continue # Restart the loop to ask for input again
 
 
 
