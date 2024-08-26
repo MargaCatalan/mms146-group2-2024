@@ -6,11 +6,11 @@ class Student:
         """
         self.name = name
         # List of dictionaries to store the answers given by the student for each subject
-        self.english_answers_given = [correct_answer] # type: ignore
-        self.filipino_answers_given = [correct_answer] # type: ignore
-        self.math_answers_given = [correct_answer] # type: ignore
-        self.art_answers_given = [correct_answer] # type: ignore
-        self.science_answers_given = [correct_answer] # type: ignore
+        self.english_answers_given = [] # type: ignore
+        self.filipino_answers_given = [] # type: ignore
+        self.math_answers_given = [] # type: ignore
+        self.art_answers_given = [] # type: ignore
+        self.science_answers_given = [] # type: ignore
 
     def save_answer(self, subject, question, options, answer, correct_answer):
         """
