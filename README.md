@@ -55,3 +55,9 @@ These are the classes and their specifications that we are expected to implement
       - generateRandomQuestions - build a list of random questions for the user
       - customizeSession - let the user customize the review session (type of question, number of question, topic, etc.)
       - generateReport - generate the report of the review session (performance of the students, questions and right answers)
+
+### Important Notes
+You will find a file named `Group2_Grade 10 Exam Reviewer.py` in the `main` directory. Here’s what you need to know about it:
+    - **Purpose of the File:** The `Group2_Grade 10 Exam Reviewer.py` file combines all the individual code files (`student.py`, `question.py`, `examreviewer.py`, and `menu.py`) into a single script. It’s provided to ensure that you can run the complete project.
+    - **Why Combine?:** The program was originally designed to be in a single file. However, we decided to separate the code into different files to track individual contributions and modularize development
+    - **How to Use:** To test our exam reviewer, run the `Group2_Grade 10 Exam Reviewer.py` file. This file should execute without issues and reflects the complete functionality of the project as intended.
