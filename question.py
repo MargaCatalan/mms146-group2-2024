@@ -1,15 +1,39 @@
-# Task Code: Question_1
 class Question:
+    """
+    A class to represent an exam question and handle its display, answer checking,
+    and storage for a student's exam session.
+    """
     def __init__(self):
-        self.question_text = None
-        self.options = None
-        self.correct_answer = None
-        self.exam_questions = []
-        self.exam_answers = []
+        self.question_text = None  # the text of the current question
+        self.options = None  # The list of options for the current question.
+        self.correct_answer = None  # The correct answer for the current question.
+        self.exam_questions = []  # A list to store the questions displayed during the exam session.
+        self.exam_answers = []  # A list to store the student's answers during the exam session.
 
-
-# Task Code: Question_2
     def display_questions(self, exam_items, selected_type, num_questions, shuffle, subject, user_name):
+        """
+        Displays a list of exam questions and options to the student. After recording 
+        the student's answers, it generates and saves the exam report.
+
+        Parameters:
+        ----------
+        exam_items : list
+            A list of all exam questions and options.
+        selected_type : str
+            The type of questions to be selected (e.g., multiple choice).
+        num_questions : int
+            The number of questions to display.
+        shuffle : bool
+            Whether or not to shuffle the questions.
+        subject : str
+            The subject name (e.g., 'Math', 'English').
+        user_name : str
+            The student's name.
+
+        Returns:
+        -------
+        None
+        """
         # Generate questions using the static method from ExamReviewer
         questions, options, answers = ExamReviewer.generate_random_questions(
             exam_items, selected_type, num_questions, shuffle
@@ -44,6 +68,30 @@ class Question:
                 print("Invalid input. Please try again.")
 
     def check_answer(self, answer, correct_answer, subject, question, options, student):
+        """
+        Compares the student's answer with the correct answer and stores the result 
+        in both the Question and Student classes.
+
+        Parameters:
+        ----------
+        answer : str
+            The student's provided answer.
+        correct_answer : str
+            The correct answer for the question.
+        subject : str
+            The subject name.
+        question : str
+            The text of the current question.
+        options : list
+            The list of options for the current question.
+        student : Student
+            The instance of the Student class representing the current user.
+
+        Returns:
+        -------
+        None
+        """
+
         if answer.lower() == correct_answer.lower():
             print("You’re correct!")
         else:
@@ -56,9 +104,6 @@ class Question:
         # Save the answer in the Student instance
         student.save_answer(subject, question, options, answer, correct_answer)
 
-
-
-# Task Code: Question_3
 class EnglishReviewer (Question):    
     def __init__(self):
         super().__init__()
@@ -323,13 +368,3 @@ class ArtReviewer (Question):
                             "True or False":   {"Questions": true_or_false_questions,
                                                 "Options": true_or_false_options,
                                                 "Answers": true_or_false_correct_answers}}
-        
-
-
-
-
-
-
-
-
-
