@@ -1,21 +1,12 @@
-# Task Code: Exam_Reviewer_1
 class ExamReviewer:
     """
-    Class for handling exam reviews, including generating random questions, customizing review sessions, saving attempts, and generating reports.
+    Class for handling exam reviews, including generating random questions,
+    customizing review sessions, saving attempts, and generating reports.
     """
     def __init__(self, subject, questions, student_answers):
-        """ 
-        Sets up the ExamReviewer with the subject, the list of questions, and the student's answers.
-
-        Parameters
-        ----------
-        subject (str) : The subject of the exam.
-        questions (list) : List of questions that was used in the exam.
-        student_answes (list) : Answers that the student provided.
-        """
-        self.subject = subject
-        self.questions = questions
-        self.student_answers = student_answers
+        self.subject = subject  # The subject of the exam
+        self.questions = questions  # List of questions that was used in the exam
+        self.student_answers = student_answers  # Answers that the student provided
 
     @staticmethod
     def generate_random_questions(exam_items, selected_type, num_questions, shuffle):
@@ -61,14 +52,13 @@ class ExamReviewer:
             options = list(options)
             answers = list(answers)
 
-        # Limit to the number of questions requested
+        # Limit the number of questions to the requested amount
         questions = questions[:num_questions]
         options = options[:num_questions]
         answers = answers[:num_questions]
 
         return questions, options, answers
 
-# Task Code: Exam_Reviewer_2
     def customize_session(subject, user_name):
         """
         Sets up the exam session based on what subject and options the user chooses.
@@ -201,12 +191,13 @@ class ExamReviewer:
             # Call display_questions
             reviewer.display_questions(reviewer.exam_items, question_type, num_questions, shuffle, subject, user_name)
 
-# Task Code: Exam_Reviewer_3
     def save_exam_attempt(self):
         """ 
-        Saves the student's current exam attempt, including their answers and score.
+        Saves the student's current exam attempt, including their answers and
+        score.
 
-        This method makes sure the student's performance is stored so it can be reviewed later.
+        This method makes sure the student's performance is stored so it can be
+        reviewed later.
         """
         global exam_attempts
         if self.subject not in exam_attempts:
@@ -224,7 +215,8 @@ class ExamReviewer:
     @staticmethod
     def generate_report(subject):
         """
-        Generates a detailed report for all student attempts in a specific subject.
+        Generates a detailed report for all student attempts in a specific
+        subject.
 
         Parameters
         ----------
@@ -268,43 +260,44 @@ class ExamReviewer:
             else:
                 print("Invalid input. Please try again.")
 
-
-# Task Code: Exam_Reviewer_4
     @staticmethod
     def get_all_performance_report():
         """
-        Generates a detailed report covering all the student's exam attempts across every subject.
+        Generates a detailed report covering all the student's exam attempts
+        across every subject.
 
         This gives an overall view of how the student is doing in all subjects.
         """
         global exam_attempts
+        # Check if there are any recorded exam attempts
         if not exam_attempts:
             print("No exam attempts found for any subject.")
             return
         
+        # Iterate through each subject and its corresponding attempts
         for subject, attempts in exam_attempts.items():
             print(f"\n\n--------------------------------  {user_name.title()}'s {subject} Exam Reports  --------------------------------")
+
+            # Iterate through each attempt for the current subject
             for i, attempt in enumerate(attempts, 1):
                 print(f"\n\n----------------------  Attempt {i}  ----------------------\n")
                 questions = attempt ['questions']
                 student_answers = attempt ['student_answers']
                 score = attempt ['score']
 
+                # Display each question, the student's answer, and the correct answer
                 for j, (question, answer) in enumerate(zip(questions, student_answers), 1):
                     print(f"\nQuestion {j}: {question['question']}")
                     print(f"Your answer: {answer}")
                     print(f"Correct answer: {question['correct_answer']}")
+                    # Check if the student's answer is correct
                     is_correct = answer.lower() == question['correct_answer'].lower()
                     print("You got this correct!" if is_correct else "You got this wrong.")
 
+                # Display the summary of the current attempt
                 print("\n\n[Attempt Summary]")
                 print(f"Total score: {score['score']}/{score['total_items']}")
                 print(f"Percentage: {score['score_percentage']:.2f}%")
 
+        # Print the end of the list of exam reports
         print(f"\n\n----------------------  End of {user_name.title()}'s Exam Reports  ---------------------")
-
-
-
-
-
-
