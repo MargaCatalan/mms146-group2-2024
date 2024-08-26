@@ -164,18 +164,26 @@ def Continue_Menu():
             print("Invalid input. Please try again.")
 
 def Exit_Menu():
+    """
+    Displays the exit menu, allowing the user to confirm if they want to exit the program.
+    If the user chooses to exit, the program will terminate. Otherwise, the user can return to the previous menu
+    """
     while True:
+        # Prompt the user to confirm if they want to exit the program
         choice_2 = input('\n'"Do you wish to exit the program? (Yes/No): ").lower()
 
+        # If yes, display a farewell message and exit the program
         if choice_2 == "yes":
             print("Thank you for using Group 2’s Grade 10 Exam Reviewer, {}.".format(user_name.capitalize()))
             print("The program will close now.\n")
             exit()
 
+        # If no, return to the previous menu without exiting
         elif choice_2 == "no":
             break
         
         else:
+            # Handle invalid input that is not 'yes' or 'no'
             print("Invalid input. Please try again.")
 
 "This is the main loop to run the program" 
